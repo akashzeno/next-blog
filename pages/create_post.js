@@ -75,7 +75,7 @@ export default function CreatePost() {
 							htmlFor="formPostImage"
 							className="createPostChooseImageLabel"
 						>
-							Choose Image&nbsp;
+							Choose Image{" "}
 						</label>
 
 						<input
