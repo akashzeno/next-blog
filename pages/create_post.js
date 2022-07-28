@@ -75,9 +75,9 @@ export default function CreatePost() {
 							htmlFor="formPostImage"
 							className="createPostChooseImageLabel"
 						>
-							Choose Image
+							Choose Image&nbsp;
 						</label>
-						&nbsp;
+
 						<input
 							className="createPostFormImageInput"
 							type="file"
