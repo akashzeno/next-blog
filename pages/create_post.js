@@ -41,7 +41,9 @@ export default function CreatePost() {
 					alt="Banner Image"
 				/>
 				<h1 className="mt-2 font-bold text-white text-5xl">Create Post</h1>
-				<h2 className="text-white text-2xl">Let's Create A New Blog Post!</h2>
+				<h2 className="text-white text-2xl">
+					Let&apos;s Create A New Blog Post!
+				</h2>
 			</header>
 			<main className="createPostFormContainer flex flex-col mt-8 mx-auto w-[750px]">
 				<Link href="/">
@@ -75,9 +77,9 @@ export default function CreatePost() {
 							htmlFor="formPostImage"
 							className="createPostChooseImageLabel"
 						>
-							Choose Image{" "}
+							Choose Image
 						</label>
-
+						&nbsp;
 						<input
 							className="createPostFormImageInput"
 							type="file"
