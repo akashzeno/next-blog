@@ -1,11 +1,17 @@
 import Head from "next/head.js";
 import Image from "next/image.js";
 import Link from "next/link.js";
+import { useRouter } from "next/router.js";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { addPost } from "../utils/firebase.js";
+import { UserContext } from "../context/userContext.js";
+import { addPost, getUserDataFromAuth } from "../utils/firebase.js";
 
 export default function CreatePost() {
-	const createPost = (event) => {
+	const { setCurrentUser } = useContext(UserContext);
+	const { back } = useRouter();
+
+	const createPost = async (event) => {
 		event.preventDefault();
 		const id = uuidv4();
 		const added_date = new Date();
@@ -20,9 +26,12 @@ export default function CreatePost() {
 		// Appending formData with modified post image File Name
 		formData.append("post_image", post_image, `${id}.${post_image_format}`);
 		const values = Object.fromEntries(formData.entries());
-		addPost({ ...values, added_date, id });
-		console.log({ ...values, added_date, id });
-		// console.log(values);
+		await addPost({ ...values, added_date, id }).then(() => {
+			alert("Post Added Successfully!");
+		});
+
+		back();
+		setCurrentUser(await getUserDataFromAuth());
 	};
 	return (
 		<>
@@ -45,7 +54,7 @@ export default function CreatePost() {
 					Let&apos;s Create A New Blog Post!
 				</h2>
 			</header>
-			<main className="createPostFormContainer flex flex-col mt-8 mx-auto w-[750px]">
+			<main className="createPostFormContainer flex flex-col mt-8 mx-4 md:mx-auto max-w-[750px]">
 				<Link href="/">
 					<a>
 						<button className="backButton">Back</button>

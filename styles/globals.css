@@ -218,16 +218,16 @@ a {
 	font-family: Arial, Helvetica, sans-serif;
 	justify-content: center;
 	list-style: outside;
-	margin-top: 32px;
+	margin-top: 2rem;
 
 	.postContent {
 		color: #000;
 		font-family: Arial, Helvetica, sans-serif;
 		list-style: outside;
-		max-width: 750px;
-		min-width: 600px;
-		padding-left: 16px;
-		padding-right: 16px;
+		max-width: 46.875rem;
+		/* min-width: 37.5rem; */
+		padding-left: 1rem;
+		padding-right: 1rem;
 		width: 100%;
 
 		.postTitle {
@@ -235,20 +235,20 @@ a {
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 2rem;
 			list-style: outside;
-			padding-bottom: 24px;
-			padding-top: 24px;
+			padding-bottom: 1.5rem;
+			padding-top: 1.5rem;
 			text-align: center;
 		}
 		.postDate {
 			display: block;
-			border-bottom: 1px solid #f1f4f8;
-			border-top: 1px solid #f1f4f8;
+			border-bottom: 0.0625rem solid #f1f4f8;
+			border-top: 0.0625rem solid #f1f4f8;
 			color: #adb5bd;
 			font-family: Arial, Helvetica, sans-serif;
 			list-style: outside;
-			padding-bottom: 24px;
-			padding-left: 16px;
-			padding-top: 24px;
+			padding-bottom: 1.5rem;
+			padding-left: 1rem;
+			padding-top: 1.5rem;
 		}
 		.postText {
 			color: #495057;
@@ -256,9 +256,9 @@ a {
 			font-weight: 400;
 			line-height: 1.4;
 			list-style: outside;
-			padding-left: 16px;
-			padding-right: 16px;
-			padding-top: 24px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			padding-top: 1.5rem;
 		}
 	}
 	.buttonContainer {
@@ -269,20 +269,20 @@ a {
 	align-items: center;
 	background-color: #004186;
 	border-radius: 50%;
-	bottom: 30px;
-	box-shadow: rgba(0, 0, 0, 0.26) 0 2px 5px 0;
+	bottom: 1.875rem;
+	box-shadow: rgba(0, 0, 0, 0.26) 0 0.125rem 0.3125rem 0;
 	color: #fff;
 	cursor: pointer;
 	display: flex;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 24px;
-	height: 50px;
+	font-size: 1.5rem;
+	height: 3.125rem;
 	justify-content: center;
 	list-style: outside;
 	position: fixed;
-	right: 30px;
+	right: 1.875rem;
 	transition: all 0.25s;
-	width: 50px;
+	width: 3.125rem;
 
 	&:hover {
 		background-color: #002349;
@@ -290,46 +290,46 @@ a {
 }
 
 .backButton {
-	border: 1px solid #004186;
+	border: 0.0625rem solid #004186;
 	border-image: none 100% 1 0 stretch;
-	border-radius: 5px;
+	border-radius: 0.3125rem;
 	color: #004186;
 	cursor: pointer;
 	font-family: Arial, Helvetica, sans-serif;
 	list-style: outside;
-	padding: 5px 8px;
+	padding: 0.3125rem 0.5rem;
 	text-decoration: none currentcolor solid;
 	text-decoration-thickness: auto;
 }
 .createPostFormTitle {
-	border: 1px solid #ced4da;
+	border: 0.0625rem solid #ced4da;
 	border-image: none 100% 1 0 stretch;
-	border-radius: 5px;
+	border-radius: 0.3125rem;
 	color: #495057;
 	cursor: text;
 	display: block;
 	font-family: MS Shell Dlg \32;
-	font-size: 18px;
+	font-size: 1.125rem;
 	list-style: outside;
-	margin-top: 16px;
-	padding: 8px;
-	width: 300px;
+	margin-top: 1rem;
+	padding: 0.5rem;
+	max-width: 18.75rem;
 }
 .createPostFormContent {
-	border: 1px solid #ced4da;
+	border: 0.0625rem solid #ced4da;
 	border-image: none 100% 1 0 stretch;
-	border-radius: 5px;
+	border-radius: 0.3125rem;
 	color: #495057;
 	cursor: text;
 	display: block;
 	font-family: monospace;
-	font-size: 18px;
+	font-size: 1.125rem;
 	list-style: outside;
-	margin-top: 16px;
+	margin-top: 1rem;
 	max-width: 100%;
-	min-height: 300px;
+	min-height: 18.75rem;
 	min-width: 100%;
-	padding: 8px;
+	padding: 0.5rem;
 	white-space: pre-wrap;
 	width: 100%;
 	word-wrap: break-word;
@@ -337,14 +337,14 @@ a {
 .createPostSubmitButton {
 	background-color: #004186;
 	border-color: #004186;
-	border-radius: 3px;
+	border-radius: 0.1875rem;
 	color: #fff;
 	cursor: pointer;
 	display: block;
 	font-family: sans-serif;
-	font-size: 18px;
+	font-size: 1.125rem;
 	list-style: outside;
-	margin-top: 16px;
+	margin-top: 1rem;
 	padding: 0.375rem 0.75rem;
 	text-align: center;
 	transition: all 0.2s ease-in-out;
@@ -358,14 +358,45 @@ a {
 	color: #000;
 	cursor: default;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 18px;
+	font-size: 1.125rem;
 	list-style: outside;
 }
 .createPostFormImageInput {
 	color: #000;
 	cursor: default;
 	font-family: sans-serif;
-	font-size: 13.3333px;
+	font-size: 0.8333rem;
 	list-style: outside;
 	white-space: nowrap;
+}
+@media (max-width: 1660px) {
+	.post {
+		width: 50%;
+	}
+}
+@media (max-width: 1330px) {
+	.post {
+		width: 60%;
+	}
+}
+@media (max-width: 1103px) {
+	.post {
+		width: 70%;
+	}
+}
+@media (max-width: 945px) {
+	.post {
+		width: 80%;
+	}
+}
+@media (max-width: 830px) {
+	.post {
+		width: 90%;
+	}
+}
+@media (max-width: 733px) {
+	.post {
+		width: 95%;
+		flex-direction: column;
+	}
 }

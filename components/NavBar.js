@@ -1,4 +1,5 @@
 import Link from "next/link.js";
+import { useRouter } from "next/router.js";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext.js";
 import {
@@ -9,12 +10,15 @@ import {
 
 export default function NavBar() {
 	const { currentUser, setCurrentUser } = useContext(UserContext);
+	const { back, push } = useRouter();
 
 	const signInWithGoogle = async () => {
 		await signInWithGooglePopup();
+		push("/");
 		setCurrentUser(await getUserDataFromAuth());
 	};
 	const signOutFromGoogle = async () => {
+		back();
 		await signOutUser();
 	};
 	return (

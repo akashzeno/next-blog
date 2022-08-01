@@ -4,10 +4,8 @@ import BlogPost from "../components/BlogPost.js";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext.js";
 import Link from "next/link.js";
-
 export default function Home() {
-	const { currentUser } = useContext(UserContext);
-
+	const { currentUser, demoData } = useContext(UserContext);
 	return (
 		<>
 			<Head>
@@ -47,6 +45,12 @@ export default function Home() {
 			<main className="flex flex-col items-center main">
 				{currentUser &&
 					currentUser.blog_posts.map((blogPostData) => {
+						return (
+							<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
+						);
+					})}
+				{demoData &&
+					demoData.blog_posts.map((blogPostData) => {
 						return (
 							<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
 						);

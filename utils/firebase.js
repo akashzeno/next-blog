@@ -42,10 +42,7 @@ provider.setCustomParameters({ prompt: "select_account" });
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const db = getFirestore();
-export async function createUserDocFromAuth(
-	userAuth = auth.currentUser,
-	additionalInformation = {}
-) {
+export async function createUserDocFromAuth(userAuth = auth.currentUser) {
 	if (!userAuth) return;
 	const userDocRef = await doc(db, "users", userAuth.uid);
 	const userSnapshot = await getDoc(userDocRef);
@@ -59,7 +56,7 @@ export async function createUserDocFromAuth(
 				displayName,
 				email,
 				createdAt,
-				blog_posts: [...additionalInformation],
+				blog_posts: [],
 			});
 		} catch (error) {
 			console.log(`error creating user ${error.message}`);
@@ -85,7 +82,6 @@ export async function getUserDataFromAuth(userAuth = auth.currentUser) {
 }
 export async function deletePost(post = {}, userAuth = auth.currentUser) {
 	delete post["post_imageUrl"];
-	1;
 	deleteImageFromStorage(post.post_image);
 	const docRef = doc(db, "users", userAuth.uid);
 	await updateDoc(docRef, {
@@ -113,3 +109,23 @@ export const uploadImageInStorage = (path, file) =>
 export const signOutUser = async () => signOut(auth);
 export const onAuthStateChangedListener = (callback) =>
 	onAuthStateChanged(auth, callback);
+export const getDemoData = async () => {
+	const docRef = doc(db, "users", "BxBoCvmMu8TohU3jl9NJQQYXbI13");
+	const docSnap = await getDoc(docRef);
+	if (docSnap.exists()) {
+		const userData = await docSnap.data();
+		// We are adding resolved firebase Image URLs
+		userData.blog_posts = await Promise.all(
+			userData.blog_posts.map(async (blogPost) => {
+				return {
+					...blogPost,
+					post_imageUrl: await getImageUrl(blogPost.post_image),
+				};
+			})
+		);
+		return userData;
+	} else {
+		// doc.data() will be undefined in this case
+		console.log("No such document!");
+	}
+};
