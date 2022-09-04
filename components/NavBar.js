@@ -10,7 +10,7 @@ import {
 
 export default function NavBar() {
 	const { currentUser, setCurrentUser } = useContext(UserContext);
-	const { back, push } = useRouter();
+	const { push } = useRouter();
 
 	const signInWithGoogle = async () => {
 		await signInWithGooglePopup();
@@ -18,7 +18,7 @@ export default function NavBar() {
 		setCurrentUser(await getUserDataFromAuth());
 	};
 	const signOutFromGoogle = async () => {
-		back();
+		push("/");
 		await signOutUser();
 	};
 	return (
