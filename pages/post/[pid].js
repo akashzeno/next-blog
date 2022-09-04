@@ -2,6 +2,7 @@ import Head from "next/head.js";
 import Image from "next/image.js";
 import { useRouter } from "next/router.js";
 import { useContext } from "react";
+import Spinner from "../../components/Spinner.js";
 import { UserContext } from "../../context/userContext.js";
 import { deletePost, getUserDataFromAuth } from "../../utils/firebase.js";
 

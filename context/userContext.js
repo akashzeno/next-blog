@@ -10,12 +10,15 @@ export const UserContext = createContext({
 	setCurrentUser: () => null,
 	demoData: null,
 	setDemoData: () => null,
+	isLoading: false,
 });
 export function UserProvider({ children }) {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [demoData, setDemoData] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
 		const unsubscribe = onAuthStateChangedListener(async (user) => {
+			setIsLoading(true);
 			if (user) {
 				setDemoData(null);
 				setCurrentUser(await getUserDataFromAuth(user));
@@ -23,6 +26,7 @@ export function UserProvider({ children }) {
 				setCurrentUser(user);
 				setDemoData(await getDemoData());
 			}
+			setIsLoading(false);
 		});
 
 		return unsubscribe;
@@ -30,7 +34,14 @@ export function UserProvider({ children }) {
 
 	return (
 		<UserContext.Provider
-			value={{ currentUser, setCurrentUser, demoData, setDemoData }}
+			value={{
+				currentUser,
+				setCurrentUser,
+				demoData,
+				setDemoData,
+				isLoading,
+				setIsLoading,
+			}}
 		>
 			{children}
 		</UserContext.Provider>

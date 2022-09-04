@@ -4,8 +4,9 @@ import BlogPost from "../components/BlogPost.js";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext.js";
 import Link from "next/link.js";
+import Spinner from "../components/Spinner.js";
 export default function Home() {
-	const { currentUser, demoData } = useContext(UserContext);
+	const { currentUser, demoData, isLoading } = useContext(UserContext);
 	return (
 		<>
 			<Head>
@@ -42,20 +43,24 @@ export default function Home() {
 					Hey, I am happy to see you on my blog!
 				</h2>
 			</header>
-			<main className="flex flex-col items-center main">
-				{currentUser &&
-					currentUser.blog_posts.map((blogPostData) => {
-						return (
-							<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
-						);
-					})}
-				{demoData &&
-					demoData.blog_posts.map((blogPostData) => {
-						return (
-							<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
-						);
-					})}
-			</main>
+			{isLoading ? (
+				<Spinner />
+			) : (
+				<main className="flex flex-col items-center main">
+					{currentUser &&
+						currentUser.blog_posts.map((blogPostData) => {
+							return (
+								<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
+							);
+						})}
+					{demoData &&
+						demoData.blog_posts.map((blogPostData) => {
+							return (
+								<BlogPost key={blogPostData.id} blogPostData={blogPostData} />
+							);
+						})}
+				</main>
+			)}
 			{currentUser && (
 				<Link href="/create_post">
 					<a>
