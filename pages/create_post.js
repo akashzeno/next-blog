@@ -9,7 +9,7 @@ import { addPost, getUserDataFromAuth } from "../utils/firebase.js";
 
 export default function CreatePost() {
 	const { setCurrentUser } = useContext(UserContext);
-	const { back } = useRouter();
+	const router = useRouter();
 
 	const createPost = async (event) => {
 		event.preventDefault();
@@ -30,8 +30,8 @@ export default function CreatePost() {
 			alert("Post Added Successfully!");
 		});
 
-		back();
 		setCurrentUser(await getUserDataFromAuth());
+		router.back();
 	};
 	return (
 		<>
@@ -42,11 +42,9 @@ export default function CreatePost() {
 			</Head>
 			<header className="relative flex flex-col items-center justify-center overflow-hidden text-center before:-z-10 before:w-full before:h-full before:absolute h-80 before:bg-black/70">
 				<Image
-					className="-z-20"
+					className="-z-20 bannerImg"
 					src="/assets/banner.jpeg"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
+					fill
 					alt="Banner Image"
 				/>
 				<h1 className="mt-2 font-bold text-white text-5xl">Create Post</h1>
@@ -56,9 +54,7 @@ export default function CreatePost() {
 			</header>
 			<main className="createPostFormContainer flex flex-col mt-8 mx-4 md:mx-auto max-w-[750px]">
 				<Link href="/">
-					<a>
-						<button className="backButton">Back</button>
-					</a>
+					<button className="backButton">Back</button>
 				</Link>
 				<form
 					encType="multipart/form-data"

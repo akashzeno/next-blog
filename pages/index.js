@@ -5,8 +5,10 @@ import { useContext } from "react";
 import { UserContext } from "../context/userContext.js";
 import Link from "next/link.js";
 import Spinner from "../components/Spinner.js";
+
 export default function Home() {
 	const { currentUser, demoData, isLoading } = useContext(UserContext);
+
 	return (
 		<>
 			<Head>
@@ -16,11 +18,9 @@ export default function Home() {
 			</Head>
 			<header className="relative flex flex-col items-center justify-center overflow-hidden text-center h-96 before:-z-10 before:w-full before:h-full before:absolute before:bg-black/70">
 				<Image
-					className="-z-20"
+					className="-z-20 bannerImg"
 					src="/assets/banner.jpeg"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
+					fill
 					alt="Banner Image"
 				/>
 				<Image
@@ -63,9 +63,7 @@ export default function Home() {
 			)}
 			{currentUser && (
 				<Link href="/create_post">
-					<a>
-						<button className="createNewPostButton">+</button>
-					</a>
+					<button className="createNewPostButton">+</button>
 				</Link>
 			)}
 		</>

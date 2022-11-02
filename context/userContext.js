@@ -16,7 +16,14 @@ export function UserProvider({ children }) {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [demoData, setDemoData] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [hydrated, setHydrated] = useState(false);
+
+	//Using Hydration Fix -> https://traviswimer.com/blog/error-hydration-failed-because-the-initial-ui-does-not-match-what-was-rendered-on-the-server/
+	// https://traviswimer.com/blog/easily-fix-react-hydration-errors/
 	useEffect(() => {
+		// This forces a rerender, so the date is rendered
+		// the second time but not the first
+		setHydrated(true);
 		const unsubscribe = onAuthStateChangedListener(async (user) => {
 			setIsLoading(true);
 			if (user) {
@@ -31,6 +38,10 @@ export function UserProvider({ children }) {
 
 		return unsubscribe;
 	}, []);
+	if (!hydrated) {
+		// Returns null on first render, so the client and server match
+		return null;
+	}
 
 	return (
 		<UserContext.Provider

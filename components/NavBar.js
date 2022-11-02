@@ -23,11 +23,11 @@ export default function NavBar() {
 	};
 	return (
 		<nav className="navigationWrapper">
-			<Link href="/">
-				<a className="logoWrapper">
+			<Link className="logoWrapper" href="/">
+				<>
 					<span className="stylish">Next</span>
 					<span className="logo">Blog</span>
-				</a>
+				</>
 			</Link>
 
 			<ul className="navigation">

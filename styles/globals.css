@@ -369,6 +369,12 @@ a {
 	list-style: outside;
 	white-space: nowrap;
 }
+
+.bannerImg {
+	object-fit: cover;
+	object-position: center;
+}
+
 @media (max-width: 1660px) {
 	.post {
 		width: 50%;

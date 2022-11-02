@@ -33,11 +33,9 @@ export default function Post() {
 				</Head>
 				<header className="relative flex flex-col items-center justify-center overflow-hidden text-center h-96 before:-z-10 before:w-full before:h-full before:absolute before:bg-black/70">
 					<Image
-						className="-z-20"
+						className="-z-20 bannerImg"
 						src={post_imageUrl}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
+						fill
 						alt="Banner Image"
 					/>
 				</header>
