@@ -405,4 +405,7 @@ a {
 		width: 95%;
 		flex-direction: column;
 	}
+	.postImage {
+		width: 100%;
+	}
 }

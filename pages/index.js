@@ -41,6 +41,8 @@ export default function Home() {
 				</h1>
 				<h2 className="text-xl text-sky-100">
 					Hey, I am happy to see you on my blog!
+					<br />
+					Sign-In to add your own!
 				</h2>
 			</header>
 			{isLoading ? (
